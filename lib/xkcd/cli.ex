@@ -21,6 +21,13 @@ defmodule Xkcd.CLI do
   end
   def process(number) do
     Xkcd.Strip.fetch(number)
+      |> decode_response
+  end
+
+  def decode_response({:ok, body}), do: JSON.decode(body)
+  def decode_response({:error, _body}) do
+    IO.puts "Error fetching from xkcd.com"
+    System.halt(2)
   end
 
   @doc """
@@ -35,7 +42,7 @@ defmodule Xkcd.CLI do
     { [ help: true ],_,_ } -> :help
     { [ random: true ],_,_ } -> :random
     { _,[number],_ } -> binary_to_integer(number)
-
+    _ -> :current
     end
   end
 end

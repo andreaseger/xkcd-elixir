@@ -10,7 +10,10 @@ defmodule Xkcd.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    [mod: { Xkcd, [] }]
+    [
+      mod:          { Xkcd, [] },
+      applications: [ :httpotion ]
+    ]
   end
 
   # Returns the list of dependencies in the format:
@@ -20,7 +23,8 @@ defmodule Xkcd.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
     [
-      {:httpotion,   github: "myfreeweb/httpotion"}
+      { :httpotion,   github: "myfreeweb/httpotion"},
+      { :json,        github: "cblage/elixir-json"}
     ]
   end
 end

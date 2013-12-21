@@ -4,6 +4,7 @@ defmodule Xkcd.CLI do
   which end up fetching a choosen xkcd comic stip with title and alt text.
   """
 
+  import :random, only: [uniform: 1]
   def run(argv) do
     argv
       |> parse_args
@@ -17,7 +18,7 @@ defmodule Xkcd.CLI do
     System.halt(0)
   end
   def process(:random) do
-    process(221)
+    process(:random.uniform(1300))
   end
   def process(number) do
     Xkcd.Strip.fetch(number)

@@ -5,7 +5,7 @@ defmodule Xkcd.CLI do
   """
 
   import :random, only: [uniform: 1]
-  def run(argv) do
+  def main(argv) do
     argv
       |> parse_args
       |> process
@@ -23,8 +23,28 @@ defmodule Xkcd.CLI do
   def process(number) do
     Xkcd.Strip.fetch(number)
       |> decode_response
+      |> download_image
+      |> print
   end
 
+  def download_image({:ok, json}) do
+    {:ok, image} = Xkcd.Strip.get(json["img"])
+    File.write("./#{extract_filename(json["img"])}", image)
+    {:ok, json}
+  end
+  def extract_filename(image_url) do
+    Regex.named_captures(%r/\/(?<filename>[^\/]*\.png)/g, image_url)[:filename]
+  end
+
+  def print({:ok, json}) do
+    IO.puts json["title"]
+    # IO.puts json["img"]
+    IO.puts json["alt"]
+  end
+  def print({:error, body}) do
+    IO.puts "Error decoding json #{body}"
+    System.halt(2)
+  end
   def decode_response({:ok, body}), do: JSON.decode(body)
   def decode_response({:error, _body}) do
     IO.puts "Error fetching from xkcd.com"

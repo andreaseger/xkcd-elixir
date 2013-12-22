@@ -5,6 +5,7 @@ defmodule Xkcd.Mixfile do
     [ app: :xkcd,
       version: "0.0.1",
       elixir: "~> 0.12.0",
+      escript_main_module: Xkcd.CLI,
       deps: deps ]
   end
 

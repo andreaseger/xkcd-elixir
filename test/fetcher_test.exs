@@ -22,7 +22,7 @@ defmodule FetcherTest do
     assert Date.from({2008,6,2}) == extract_date(dict)
   end
   test "fetching metadata for a numbered xkcd" do
-    strip = Strip[number: 123, title: "Centrifugal Force", imageurl: "http://imgs.xkcd.com/comics/centrifugal_force.png", alt: "You spin me right round, baby, right round, in a manner depriving me of an inertial reference frame.  Baby.", date: Date.Gregorian[date: {2006, 7, 3}, time: {0, 0, 0}, tz: {0.0, "UTC"}]]
+    strip = Strip[number: 123, title: "Centrifugal Force", imageurl: "http://imgs.xkcd.com/comics/centrifugal_force.png", alt: "You spin me right round, baby, right round, in a manner depriving me of an inertial reference frame.  Baby.", date: Date.Gregorian[date: {2006, 7, 3}, time: {0, 0, 0}, tz: {0.0, "UTC"}], url: "http://xkcd.com/123", mobile_url: "http://m.xkcd.com/123"]
     assert strip == get_xkcd(123)
   end
 end

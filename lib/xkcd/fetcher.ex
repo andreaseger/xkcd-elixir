@@ -33,11 +33,14 @@ defmodule Xkcd.Fetcher do
   #def decode_response({:error, _body}), do: :error
 
   def make_strip({:ok, json}) do
-    {:ok, Strip[number: json["num"],
+    num = json["num"]
+    {:ok, Strip[number: num,
                 title: json["safe_title"],
                 alt: json["alt"],
                 imageurl: json["img"],
-                date: extract_date(json)]}
+                date: extract_date(json),
+                url: build_url(num),
+                mobile_url: build_mobile_url(num)]}
   end
   # defp make_strip({:error, msg}), do: :error
 
@@ -47,4 +50,7 @@ defmodule Xkcd.Fetcher do
     day = binary_to_integer(dict["day"])
     Date.from({year,month,day})
   end
+
+  def build_url(number), do: "http://xkcd.com/#{number}"
+  def build_mobile_url(number), do: "http://m.xkcd.com/#{number}"
 end

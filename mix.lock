@@ -1,3 +1,4 @@
-[ "httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "27589c8898826587f639b8043942d6c11094b0ec", []},
-  "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "d824491d37449763ac44398f8494731e0c1418c1", []},
+[ "elixir-datetime": {:git, "git://github.com/alco/elixir-datetime.git", "2214061a5b031102cf88db9c48b580316805601d", []},
+  "httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "1e2c234b025c41cb2ff7570a35efa9f12d28f31b", []},
+  "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "108c131d782c693bd3e26a6587da8196ef9282e3", []},
   "json": {:git, "git://github.com/cblage/elixir-json.git", "a16a82805771b99fab5b567eb3678bca1dce424e", []} ]

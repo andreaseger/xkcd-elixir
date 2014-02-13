@@ -3,9 +3,8 @@ defmodule Xkcd.Mixfile do
 
   def project do
     [ app: :xkcd,
-      version: "0.0.1",
+      version: "0.0.2",
       elixir: "~> 0.12.0",
-      escript_main_module: Xkcd.CLI,
       deps: deps ]
   end
 
@@ -25,7 +24,8 @@ defmodule Xkcd.Mixfile do
   defp deps do
     [
       { :httpotion,   github: "myfreeweb/httpotion"},
-      { :json,        github: "cblage/elixir-json"}
+      { :json,        github: "cblage/elixir-json"},
+      {:"elixir-datetime", github: "alco/elixir-datetime"}
     ]
   end
 end

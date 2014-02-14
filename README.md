@@ -1,6 +1,7 @@
 # Xkcd
 
-this is just a very simple cmd line tool to fetch a xkcd by its number.
+will become a long/infinite running process which checks for new xkcd comics and
+tweet that xkcd in a mobile friendly fashion.
 
-Mainly just to do more with elixir.
-
+## Meta
+more elixir to come

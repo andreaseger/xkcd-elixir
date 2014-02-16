@@ -41,6 +41,9 @@ defmodule Xkcd.Controller do
   end
 
   defp tweet(comic) do
-    IO.inspect comic
+    tweet_text = Enum.join [comic.number, comic.title, comic.imageurl, comic.mobile_url], " "
+    IO.puts tweet_text
+    # system("t mxkcd #{tweet_text}")
+    # Xkcd.Tweeter(tweet_text)
   end
 end

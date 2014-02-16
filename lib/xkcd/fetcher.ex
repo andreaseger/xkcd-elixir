@@ -7,6 +7,9 @@ defmodule Xkcd.Fetcher do
     {:ok, strip} = fetch(number)
     strip
   end
+  def current_comic do
+    get_xkcd(:current)
+  end
 
   defp fetch(number) do
     number
@@ -30,7 +33,10 @@ defmodule Xkcd.Fetcher do
   end
 
   def decode_response({:ok, body}), do: JSON.decode(body)
-  #def decode_response({:error, _body}), do: :error
+  def decode_response({:error, body}) do
+    IO.puts body
+    {:error, body}
+  end
 
   def make_strip({:ok, json}) do
     num = json["num"]
